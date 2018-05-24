@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "885809574201",
+    "firebase_url": "https://kgb-news.firebaseio.com",
+    "project_id": "kgb-news",
+    "storage_bucket": "kgb-news.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885809574201:android:44d6927bccda0163",
+        "android_client_info": {
+          "package_name": "com.kgb.news"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885809574201-h4nspm2l6prc3epuadirkl38s6vl88fl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kgb.news",
+            "certificate_hash": "17267dffc954d1f62e3d84688dfa6dccc7b0eafe"
+          }
+        },
+        {
+          "client_id": "885809574201-bf7uqio4olhrhr374svd1vf61ub8659b.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "885809574201-bf7uqio4olhrhr374svd1vf61ub8659b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCirhZSwhuDxLWn1wrfpARyH0pzM4VfPeY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "885809574201-bf7uqio4olhrhr374svd1vf61ub8659b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
