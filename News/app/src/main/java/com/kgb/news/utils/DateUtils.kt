@@ -15,18 +15,22 @@ class DateUtils {
 
     companion object {
         private val TAG: String = DateUtils::class.java.simpleName
-        fun formatNewsApiDate(inputDate: String): String {
-            try {
-                val inputDateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-                val outputDateFormat = "EEE, d MMM yyyy KK:mm"
-                val dateFormat = SimpleDateFormat(inputDateFormat, Locale.getDefault())
-                val date = dateFormat.parse(inputDate)
-                dateFormat.applyPattern(outputDateFormat)
-                return dateFormat.format(date)
-            } catch(e: ParseException) {
-                Log.e(TAG, "date parse exception:", e)
-                FirebaseCrash.report(e)
+        @JvmStatic
+        fun formatNewsApiDate(inputDate: String?): String? {
+            inputDate?.let {
+                try {
+                    val inputDateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+                    val outputDateFormat = "EEE, d MMM yyyy KK:mm"
+                    val dateFormat = SimpleDateFormat(inputDateFormat, Locale.getDefault())
+                    val date = dateFormat.parse(inputDate)
+                    dateFormat.applyPattern(outputDateFormat)
+                    return dateFormat.format(date)
+                } catch(e: ParseException) {
+                    Log.e(TAG, "date parse exception:", e)
+                    FirebaseCrash.report(e)
+                }
             }
+
             return inputDate
         }
     }
