@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import android.widget.Toast
 import com.kgb.news.model.GetArticlesResponse
 import com.kgb.news.networking.NewsAPI
@@ -21,9 +22,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         rv_activity_main.layoutManager = LinearLayoutManager(this)
 
-        val call: Call<GetArticlesResponse> = NewsAPI.getApi().getArticles("reuters", "top")
+        val call: Call<GetArticlesResponse> = NewsAPI.getApi().getArticles("espn", "top")
         call.enqueue(object: Callback<GetArticlesResponse> {
             override fun onResponse(call: Call<GetArticlesResponse>?, response: Response<GetArticlesResponse>?) {
+                pb_activity_main_progress.visibility = View.GONE
                 response?.body()?.articles?.let {
                     Toast.makeText(this@MainActivity, "Response received", Toast.LENGTH_SHORT).show()
                     NewsStore.newsArticles = it
@@ -35,6 +37,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<GetArticlesResponse>?, t: Throwable?) {
+                pb_activity_main_progress.visibility = View.GONE
                 Toast.makeText(this@MainActivity, "Error received", Toast.LENGTH_SHORT).show()
             }
         })

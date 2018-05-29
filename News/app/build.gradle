@@ -11,6 +11,14 @@ androidExtensions {
 }
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'newsapp'
+            keyPassword 'h4u2d1c3'
+            storeFile file('/home/k.betlej/Documents/keystore/kgbkeystore.jks')
+            storePassword 'h4u2d1c3'
+        }
+    }
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.kgb.news"
@@ -23,8 +31,11 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
         }
     }
 }
@@ -37,7 +48,7 @@ dependencies {
             }
         }
     }
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:cardview-v7:27.1.1'
@@ -52,20 +63,25 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.0'
     implementation 'com.google.firebase:firebase-core:15.0.2'
     implementation 'com.google.firebase:firebase-crash:15.0.2'
-
     kapt 'com.github.bumptech.glide:compiler:4.7.1'
     testImplementation 'junit:junit:4.12'
-    testImplementation "org.mockito:mockito-core:2.18.3"
-    testImplementation ("org.powermock:powermock-api-mockito2:2.0.0-beta.5") {
+    testImplementation 'org.mockito:mockito-core:2.18.3'
+    testImplementation('org.powermock:powermock-api-mockito2:2.0.0-beta.5') {
         exclude module: 'hamcrest-core'
         exclude module: 'objenesis'
     }
-    testImplementation ("org.powermock:powermock-module-junit4:2.0.0-beta.5") {
+    testImplementation('org.powermock:powermock-module-junit4:2.0.0-beta.5') {
         exclude module: 'hamcrest-core'
         exclude module: 'objenesis'
     }
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'design'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+    }
 }
 
 apply plugin: 'com.google.gms.google-services'
