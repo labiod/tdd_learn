@@ -2,9 +2,11 @@ package com.kgb.service;
 
 import com.kgb.dao.IPlantDAO;
 import com.kgb.dao.PlantDAOStub;
-import com.kgb.dao.PlantJsonDao;
 import com.kgb.dto.PlantDTO;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -19,7 +21,7 @@ public class PlantService implements IPlantService {
     }
 
     @Override
-    public List<PlantDTO> fetchPlants(String filter) {
+    public List<PlantDTO> fetchPlants(String filter) throws IOException, JSONException {
         return plantDAO.fetchPlants(filter);
     }
 }
