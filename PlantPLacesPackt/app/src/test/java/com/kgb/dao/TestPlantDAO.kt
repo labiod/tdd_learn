@@ -1,10 +1,7 @@
-package com.kgb.plantplacespackt
+package com.kgb.dao
 
-import com.kgb.dao.IPlantDAO
-import com.kgb.dao.PlantDAOStub
 import junit.framework.Assert.*
 import org.junit.*
-import org.junit.Assert.assertThat
 
 class TestPlantDAO {
 

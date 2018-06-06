@@ -12,6 +12,16 @@ import java.util.List;
  */
 public class PlantDAOStub implements IPlantDAO {
     @Override
+    public NetworkDAO getNetworkDAO() {
+        return null;
+    }
+
+    @Override
+    public void setNetworkDAO(NetworkDAO networkDAO) {
+
+    }
+
+    @Override
     public List<PlantDTO> fetchPlants(String filter) {
         List<PlantDTO> allPlants = new ArrayList<>();
         PlantDTO plant = new TreeDTO(

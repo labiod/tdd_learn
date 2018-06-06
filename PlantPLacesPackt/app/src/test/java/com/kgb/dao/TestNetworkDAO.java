@@ -1,4 +1,4 @@
-package com.kgb.plantplacespackt;
+package com.kgb.dao;
 
 import com.kgb.dao.NetworkDAO;
 

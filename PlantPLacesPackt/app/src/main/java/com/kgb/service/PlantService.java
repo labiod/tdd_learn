@@ -1,6 +1,7 @@
 package com.kgb.service;
 
 import com.kgb.dao.IPlantDAO;
+import com.kgb.dao.PlantDAO;
 import com.kgb.dao.PlantDAOStub;
 import com.kgb.dto.PlantDTO;
 
@@ -17,7 +18,7 @@ public class PlantService implements IPlantService {
     private IPlantDAO plantDAO;
 
     public PlantService() {
-        plantDAO = new PlantDAOStub();
+        plantDAO = new PlantDAO();
     }
 
     @Override

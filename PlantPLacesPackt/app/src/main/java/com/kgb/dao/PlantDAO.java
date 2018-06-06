@@ -11,15 +11,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlantDAO implements IPlantDAO {
-    private final NetworkDAO networkDAO;
+
+    public static final String API_ADDRESS = "http://plantplaces.com/perl/mobile/viewplantsjson.pl?Combined_Name=";
+    private NetworkDAO networkDAO;
 
     public PlantDAO() {
         networkDAO = new NetworkDAO();
     }
 
     @Override
+    public NetworkDAO getNetworkDAO() {
+        return networkDAO;
+    }
+
+    @Override
+    public void setNetworkDAO(NetworkDAO networkDAO) {
+        this.networkDAO = networkDAO;
+    }
+
+    @Override
     public List<PlantDTO> fetchPlants(String filter) throws IOException, JSONException {
-        String uri = "http://plantplaces.com/perl/mobile/viewplantsjson.pl?Combined_Name="+filter;
+        String uri = API_ADDRESS + filter;
         String request = networkDAO.fetch(uri);
 
         // Create a variable to hold our return data.
@@ -39,7 +51,7 @@ public class PlantDAO implements IPlantDAO {
             String cultivar = jsonPlant.getString("cultivar");
             String common = jsonPlant.getString("common");
 
-            // create a PLantDTO object that we will populate with JSON Data.
+            // create a PlantDTO object that we will populate with JSON Data.
             PlantDTO plant = new PlantDTO(guid, genus, species, cultivar, common, "");
 
             // add our newly created Plant DTO to our collection.

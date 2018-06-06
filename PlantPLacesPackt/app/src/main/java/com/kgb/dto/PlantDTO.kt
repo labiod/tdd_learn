@@ -11,4 +11,11 @@ open class PlantDTO(val guid: Int?,
     override fun toString(): String {
         return "$genus $species $cultivar $common"
     }
+
+    override fun equals(other: Any?): Boolean {
+        val otherPlant: PlantDTO = other as PlantDTO
+        if (genus == otherPlant.genus) {
+        }
+        return super.equals(other)
+    }
 }
